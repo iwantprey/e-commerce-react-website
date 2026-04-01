@@ -1,0 +1,247 @@
+
+/* card */
+.card{
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsla(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  max-width: 250px;
+  display: inline-block;
+}
+
+.card .card-img{
+  max-width: 60%;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.card .card-title{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: hsl(0, 0, 20%);
+}
+
+.card .card-text{
+  font-family: Arial, sans-serif;
+  color: hsl(0, 0, 20%);
+}
+
+/* button */
+.grn-btn{
+
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* user */
+.user{
+  font-family: Arial, sans-serif;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsla(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+}
+.user p{
+  font-family: Arial, sans-serif;
+  color: hsl(0, 0, 20%);
+  margin: 0;
+}
+
+/* signUpForm */
+.inputBox {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.inputBox input {
+  padding: 14px 12px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: transparent;
+  box-sizing: border-box; 
+  outline: none;
+}
+
+
+.inputBox label {
+  position: absolute;
+  left: 12px; 
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 0 5px;
+  color: #666;
+  pointer-events: none;
+  transition: 0.5s ease all;
+}
+
+
+.inputBox input:focus + label,
+.inputBox input:not(:placeholder-shown) + label {
+  top: 0; 
+  left: 10px;
+  font-size: 12px;
+  color: #4CAF50;
+  font-weight: bold;
+  padding: 0 4px; 
+  background-color: white; 
+  z-index: 10; 
+}
+
+/* Error Message Styling */
+.error {
+  color: red;
+  font-size: 11px;
+  margin: 2px 0 0 5px;
+  font-family: Arial, sans-serif;
+}
+
+.grn-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* nav */
+.nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 1.5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navLink{
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.navLink:hover {
+  color: #007bff;
+}
+
+.logoutBtn {
+  background: none;
+  border: none;
+  font: inherit;
+  padding: 0;
+}
+
+/* footer */
+
+footer{
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+}
+
+/* HomePage */
+.homeContainer{
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+}
+
+.appContainer{
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+}
+  color: #007bff;
+}
+
+/* Dropdown Styles */
+.navDropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownTrigger {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: calc(100% + 15px);
+  right: 0;
+  background-color: #ffffff;
+  min-width: 200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  z-index: 1001;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  animation: dropdownFadeIn 0.2s ease-out;
+  overflow: hidden;
+}
+
+@keyframes dropdownFadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  text-align: left;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+}
+
+.dropdownItem:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+  padding-left: 1.75rem;
+}
+
+.logoutBtn {
+  color: #d93025; /* Subtle red for logout action */
+}

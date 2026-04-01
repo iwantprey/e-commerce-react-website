@@ -1,0 +1,89 @@
+.profileWrapper {
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  background-color: #fafafa;
+}
+
+.profileCard {
+  background: white;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 800px;
+}
+
+.profileHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.avatarContainer {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profileAvatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f8f9fa;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.avatarInput {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.formSection {
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.formSection h3 {
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.fullWidth { grid-column: span 2; }
+
+.inputGroup label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fdfdfd;
+}
+
+.inputGroup input:disabled { background: #f8f9fa; color: #999; }
+
+.successMsg { color: #28a745; margin-bottom: 1rem; font-weight: 600; }
+
+.profileActions { display: flex; gap: 1rem; margin-top: 2rem; }

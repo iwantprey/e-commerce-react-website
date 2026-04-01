@@ -1,0 +1,107 @@
+{
+  "users": [
+    {
+      "firstName": "Roland",
+      "lastName": "Martinez",
+      "email": "admin@example.com",
+      "userName": "roland",
+      "password": "12345678",
+      "id": "EBEpTbqlJTU"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "HFeCAv_yODk"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "fhK1uNh8s0c"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "S9IpHcWCWns"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "99wtX1GkTVs"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "0__uZncqt1c"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "E8Olv141FNQ"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "5CLMzvMuFN4"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "4Ej3IRab8SU"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "C_TgwgxYB7g"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "12345678",
+      "id": "PsDRQwPT_bk"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "title": "Classic White Tee",
+      "price": 25,
+      "category": "Men",
+      "image": "https://placehold.co/300x300/e9ecef/495057?text=White+Tee"
+    },
+    {
+      "id": "2",
+      "title": "Oversized Denim Jacket",
+      "price": 85,
+      "category": "Men",
+      "image": "https://placehold.co/300x300/e9ecef/495057?text=Denim+Jacket"
+    },
+    {
+      "id": "3",
+      "title": "Slim Fit Chinos",
+      "price": 55,
+      "category": "Men",
+      "image": "https://placehold.co/300x300/e9ecef/495057?text=Chinos"
+    },
+    {
+      "id": "4",
+      "title": "Knit Wool Sweater",
+      "price": 70,
+      "category": "Men",
+      "image": "https://placehold.co/300x300/e9ecef/495057?text=Sweater"
+    },
+    {
+      "id": "5",
+      "title": "Silk Midi Dress",
+      "price": 120,
+      "category": "Women",
+      "image": "https://placehold.co/300x300/f8f9fa/333?text=Silk+Dress"
+    },
+    {
+      "id": "6",
+      "title": "Leather Tote Bag",
+      "price": 150,
+      "category": "Accessories",
+      "image": "https://placehold.co/300x300/f8f9fa/333?text=Tote+Bag"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
