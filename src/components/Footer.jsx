@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
+import { gsap, useGSAP } from '../lib/gsap.js';
 
 const Footer = () => {
+  const footerRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.from('.footerColumn', {
+      y: 36,
+      autoAlpha: 0,
+      stagger: 0.1,
+      duration: 0.7,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: footerRef.current,
+        start: 'top 88%',
+      },
+    });
+
+    gsap.from('.footerBottom', {
+      y: 18,
+      autoAlpha: 0,
+      duration: 0.45,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.footerBottom',
+        start: 'top 96%',
+      },
+    });
+  }, { scope: footerRef });
+
   return (
-    <footer className="footer">
+    <footer className="footer" ref={footerRef}>
       <div className="footerContainer">
         <div className="footerGrid">
           {/* Brand Overview */}

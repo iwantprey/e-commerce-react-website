@@ -1,5 +1,5 @@
-import HeroSection from './HeroSection.jsx';
-import NewArrivalSection from './NewArrivalSection.jsx';
+import HeroSection from '../components/HeroSection.jsx';
+import NewArrivalSection from '../components/NewArrivalSection.jsx';
 
 const HomePage = () => {
     return (

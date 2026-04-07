@@ -1,0 +1,67 @@
+.ordersCard {
+  max-width: 1200px;
+}
+
+.ordersTableWrapper {
+  overflow-x: auto;
+}
+
+.ordersTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.ordersTable th,
+.ordersTable td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.ordersTable th {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.statusSelect {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  background: white;
+}
+
+.orderStatus {
+  display: inline-flex;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.orderStatus.pending {
+  background: #fff4d6;
+  color: #a46b00;
+}
+
+.orderStatus.processing {
+  background: #dff1ff;
+  color: #0f5d9a;
+}
+
+.orderStatus.completed {
+  background: #e2f7e8;
+  color: #1c7c3a;
+}
+
+.orderStatus.cancelled {
+  background: #fde3e0;
+  color: #ba3b2c;
+}
+
+.emptyOrders {
+  padding: 2rem 0;
+}
