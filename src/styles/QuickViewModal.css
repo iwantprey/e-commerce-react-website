@@ -99,3 +99,45 @@
   color: #007bff;
   margin-bottom: 2rem;
 }
+
+@media (max-width: 900px) {
+  .modalBody {
+    flex-direction: column;
+  }
+
+  .modalImage {
+    min-height: 320px;
+  }
+
+  .modalInfo {
+    padding: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .modalOverlay {
+    padding: 1rem;
+  }
+
+  .closeBtn {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .modalImage {
+    min-height: 240px;
+  }
+
+  .modalInfo {
+    padding: 1.5rem 1rem;
+  }
+
+  .modalTitle {
+    font-size: 1.7rem;
+  }
+
+  .modalPrice {
+    font-size: 1.35rem;
+    margin-bottom: 1.25rem;
+  }
+}

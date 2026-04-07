@@ -87,3 +87,32 @@
 .successMsg { color: #28a745; margin-bottom: 1rem; font-weight: 600; }
 
 .profileActions { display: flex; gap: 1rem; margin-top: 2rem; }
+
+@media (max-width: 820px) {
+  .profileWrapper {
+    padding: 2.5rem 1rem;
+  }
+
+  .profileCard {
+    padding: 2rem 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .fullWidth {
+    grid-column: span 1;
+  }
+
+  .profileActions {
+    flex-direction: column;
+  }
+
+  .profileActions .themeButton,
+  .profileActions .secondaryButton {
+    width: 100%;
+  }
+}

@@ -81,3 +81,25 @@
   text-decoration: none;
   font-weight: 600;
 }
+
+@media (max-width: 540px) {
+  .loginWrapper {
+    padding: 1rem 0.75rem;
+  }
+
+  .loginCard {
+    padding: 2rem 1rem;
+  }
+
+  .loginTitle {
+    font-size: 1.7rem;
+  }
+
+  .loginSubtitle {
+    margin-bottom: 2rem;
+  }
+
+  .themeButton {
+    padding: 0.9rem;
+  }
+}

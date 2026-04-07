@@ -176,7 +176,7 @@ footer{
 .appContainer{
   font-family: Arial, sans-serif;
   padding: 20px;
-  margin: 20px;
+  margin: 0;
   text-align: center;
 }
 .navDropdown {
@@ -246,4 +246,31 @@ footer{
   border-radius: 0 0 10px 10px;
   padding-top: 1rem;
   width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .homeContainer {
+    padding: 12px;
+    margin: 8px;
+  }
+
+  .appContainer {
+    padding: 12px;
+  }
 }
