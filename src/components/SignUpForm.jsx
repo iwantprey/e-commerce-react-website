@@ -1,15 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { CartContext } from '../CartContext';
 import '../styles/Errors.css';
 import '../styles/SignUpPage.css';
+import { gsap, useGSAP } from '../lib/gsap.js';
 
 export default function SignUpForm (){
     const { signUp } = useContext(AuthContext);
+    const { addToCart } = useContext(CartContext);
     const navigate = useNavigate();
+    const location = useLocation();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [serverError, setServerError] = useState('');
+    const formRef = useRef(null);
 
     const {register,
         handleSubmit,
@@ -19,9 +24,15 @@ export default function SignUpForm (){
         setIsSubmitting(true);
         setServerError('');
         try {
-            await signUp(data);
-            // Redirect to login or home after successful signup
-            navigate('/login');
+            const createdUser = await signUp(data);
+
+            if (location.state?.pendingCartItem) {
+                addToCart(location.state.pendingCartItem, createdUser);
+                navigate('/cart');
+                return;
+            }
+
+            navigate(location.state?.from || '/');
         } catch (err) {
             setServerError(err.message);
         } finally {
@@ -29,13 +40,42 @@ export default function SignUpForm (){
         }
     };
 
+    useGSAP(() => {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+        tl.from('.loginCard', {
+            y: 30,
+            autoAlpha: 0,
+            scale: 0.97,
+            duration: 0.55,
+        })
+            .from('.loginTitle, .loginSubtitle, .error', {
+                y: 18,
+                autoAlpha: 0,
+                stagger: 0.08,
+                duration: 0.35,
+            }, '-=0.2')
+            .from('.inputBox', {
+                y: 20,
+                autoAlpha: 0,
+                stagger: 0.06,
+                duration: 0.32,
+            }, '-=0.16')
+            .from('.themeButton, .loginFooter', {
+                y: 18,
+                autoAlpha: 0,
+                stagger: 0.08,
+                duration: 0.28,
+            }, '-=0.1');
+    }, { scope: formRef, dependencies: [serverError], revertOnUpdate: true });
+
     return(
-        <div className="loginWrapper">
+        <div className="loginWrapper" ref={formRef}>
             <div className="loginCard">
                 <h1 className="loginTitle">Create Account</h1>
                 <p className="loginSubtitle">Join our fashion community today.</p>
 
-                {serverError && <p className="error">{serverError}</p>}
+                {(serverError || location.state?.authMessage) && <p className="error">{serverError || location.state?.authMessage}</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="inputBox">
                         <input type="text" id="firstName" placeholder="First Name"

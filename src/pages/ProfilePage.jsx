@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import '../styles/ProfilePage.css';
 import '../styles/Errors.css';
@@ -24,7 +25,6 @@ const ProfilePage = () => {
     useEffect(() => {
         if (user) {
             setFormData({
-                ...formData,
                 firstName: user.firstName || '',
                 lastName: user.lastName || '',
                 email: user.email || '',
@@ -58,7 +58,7 @@ const ProfilePage = () => {
     };
 
     if (!user.isAuth) {
-        return <div className="homeContainer"><h1>Please log in to view your profile.</h1></div>;
+        return <Navigate to="/login" replace state={{ authMessage: 'Please sign in to view your profile.' }} />;
     }
 
     return (
@@ -94,8 +94,8 @@ const ProfilePage = () => {
                             </div>
                             <div className="inputGroup">
                                 <label>Last Name</label>
-                            </div>
                                 <input name="lastName" value={formData.lastName} onChange={handleChange} disabled={!isEditing} />
+                            </div>
                             <div className="inputGroup fullWidth">
                                 <label>Email Address</label>
                                 <input type="email" name="email" value={formData.email} onChange={handleChange} disabled={!isEditing} />

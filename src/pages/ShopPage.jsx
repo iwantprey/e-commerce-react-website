@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { ENDPOINTS } from '../apiConfig';
+import React, { useState, useEffect, useRef } from 'react';
+import { ENDPOINTS } from '../apiConfig.js';
 import '../styles/NewArrivalSection.css';
-import QuickViewModal from './QuickViewModal.jsx';
+import QuickViewModal from '../components/QuickViewModal.jsx';
+import AddToCartButton from '../components/AddToCartButton.jsx';
+import { gsap, useGSAP } from '../lib/gsap.js';
 
 const ShopPage = () => {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const pageRef = useRef(null);
 
     useEffect(() => {
         fetch(ENDPOINTS.PRODUCTS)
@@ -26,8 +29,44 @@ const ShopPage = () => {
         ? products 
         : products.filter(product => product.category === selectedCategory);
 
+    useGSAP(() => {
+        gsap.from('.sectionHeader > *', {
+            y: 26,
+            autoAlpha: 0,
+            stagger: 0.1,
+            duration: 0.55,
+            ease: 'power3.out',
+        });
+
+        gsap.from('.filterBtn', {
+            y: 20,
+            autoAlpha: 0,
+            stagger: 0.06,
+            duration: 0.35,
+            ease: 'power3.out',
+        });
+
+        if (!filteredProducts.length) return;
+
+        gsap.from('.productCard', {
+            y: 48,
+            autoAlpha: 0,
+            stagger: 0.07,
+            duration: 0.7,
+            ease: 'power3.out',
+        });
+
+        gsap.to('.filterBtn.active', {
+            scale: 1.04,
+            duration: 0.25,
+            ease: 'power2.out',
+            yoyo: true,
+            repeat: 1,
+        });
+    }, { scope: pageRef, dependencies: [filteredProducts, selectedCategory], revertOnUpdate: true });
+
     return (
-        <div className="homeContainer">
+        <div className="homeContainer" ref={pageRef}>
             <header className="sectionHeader">
                 <h1 className="sectionTitle">Shop All</h1>
                 <p className="sectionSubtitle">Explore our complete collection of modern fashion essentials.</p>
@@ -57,7 +96,7 @@ const ShopPage = () => {
                             <div className="productInfo">
                                 <h3 className="productName">{product.title}</h3>
                                 <p className="productPrice">${product.price}</p>
-                                <button className="addToCartBtn">Add to Cart</button>
+                                <AddToCartButton product={product} />
                             </div>
                         </div>
                     ))}

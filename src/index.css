@@ -126,27 +126,42 @@
 }
 
 /* nav */
-.nav{
+.navbar-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2.5rem;
   padding: 1.5rem 2rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 1rem auto;
 }
 
-.navLink{
+.navbar-links nav{
   text-decoration: none;
   color: #1a1a1a;
   font-weight: 600;
   font-size: 1rem;
   transition: color 0.2s ease;
   cursor: pointer;
+  gap: 2.5rem;
 }
 
-.navLink:hover {
+.navbar-links nav:hover {
   color: #007bff;
+}
+
+.navbar-auth nav{
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  gap: 2.5rem;
+}
+
+.navbar-auth nav:hover {
+  color: #08ef68;
 }
 
 .logoutBtn {

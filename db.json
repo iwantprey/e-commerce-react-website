@@ -6,57 +6,27 @@
       "email": "admin@example.com",
       "userName": "roland",
       "password": "12345678",
+      "role": "admin",
+      "profilePic": "https://placehold.co/150x150/e9ecef/495057?text=Admin",
+      "address": "1 Admin Avenue",
+      "city": "Manila",
+      "zipCode": "1000",
+      "createdAt": "2026-04-07T08:00:00.000Z",
       "id": "EBEpTbqlJTU"
     },
     {
-      "email": "admin@example.com",
+      "firstName": "Ava",
+      "lastName": "Santos",
+      "email": "ava@example.com",
+      "userName": "ava",
       "password": "12345678",
+      "role": "user",
+      "profilePic": "https://placehold.co/150x150/e9ecef/495057?text=User",
+      "address": "24 Fashion Street",
+      "city": "Quezon City",
+      "zipCode": "1100",
+      "createdAt": "2026-04-07T09:00:00.000Z",
       "id": "HFeCAv_yODk"
-    },
-    {
-      "email": "admin@example.com",
-      "password": "12345678",
-      "id": "fhK1uNh8s0c"
-    },
-    {
-      "email": "admin@example.com",
-      "password": "12345678",
-      "id": "S9IpHcWCWns"
-    },
-    {
-      "email": "admin@example.com",
-      "password": "12345678",
-      "id": "99wtX1GkTVs"
-    },
-    {
-      "email": "admin@example.com",
-      "password": "12345678",
-      "id": "0__uZncqt1c"
-    },
-    {
-      "email": "admin@example.com",
-      "password": "12345678",
-      "id": "E8Olv141FNQ"
-    },
-    {
-      "email": "admin@example.com",
-      "password": "12345678",
-      "id": "5CLMzvMuFN4"
-    },
-    {
-      "email": "admin@example.com",
-      "password": "12345678",
-      "id": "4Ej3IRab8SU"
-    },
-    {
-      "email": "admin@example.com",
-      "password": "12345678",
-      "id": "C_TgwgxYB7g"
-    },
-    {
-      "email": "admin@example.com",
-      "password": "12345678",
-      "id": "PsDRQwPT_bk"
     }
   ],
   "products": [
@@ -101,6 +71,36 @@
       "price": 150,
       "category": "Accessories",
       "image": "https://placehold.co/300x300/f8f9fa/333?text=Tote+Bag"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "userId": "HFeCAv_yODk",
+      "customerName": "Ava Santos",
+      "email": "ava@example.com",
+      "role": "user",
+      "status": "pending",
+      "total": 110,
+      "createdAt": "2026-04-07T10:00:00.000Z",
+      "items": [
+        {
+          "id": "2",
+          "title": "Oversized Denim Jacket",
+          "price": 85,
+          "image": "https://placehold.co/300x300/e9ecef/495057?text=Denim+Jacket",
+          "category": "Men",
+          "quantity": 1
+        },
+        {
+          "id": "1",
+          "title": "Classic White Tee",
+          "price": 25,
+          "image": "https://placehold.co/300x300/e9ecef/495057?text=White+Tee",
+          "category": "Men",
+          "quantity": 1
+        }
+      ]
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
