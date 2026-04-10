@@ -30,65 +30,63 @@ const Navbar = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    // Entrance Animation
     useGSAP(() => {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
         tl.from('.navbar-left .navLink', {
             x: -24,
             autoAlpha: 0,
-            duration: 0.55,
+            duration: 0.8,
+            clearProps: 'all',
         })
             .from('.navbar-links .navLink', {
                 y: -18,
                 autoAlpha: 0,
-                stagger: 0.08,
-                duration: 0.45,
-            }, '-=0.25')
-            .from('.navbar-right .navLink, .navbar-right .dropdownTrigger', {
+                stagger: 0.05,
+                duration: 0.7,
+                clearProps: 'all',
+            }, '-=0.5')
+            .from('.navbar-right > *', {
                 x: 24,
                 autoAlpha: 0,
-                stagger: 0.06,
-                duration: 0.4,
-            }, '-=0.3');
+                stagger: 0.05,
+                duration: 0.6,
+                clearProps: 'all',
+            }, '-=0.5');
     }, { scope: navRef });
 
+    // Dropdown Panel Animation
     useGSAP(() => {
-        if (!isOpen || !dropdownPanelRef.current) return;
+        if (isOpen && dropdownPanelRef.current) {
+            const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+            tl.fromTo(dropdownPanelRef.current,
+                { autoAlpha: 0, y: -10, scale: 0.95, transformOrigin: 'top right' },
+                { autoAlpha: 1, y: 0, scale: 1, duration: 0.25, clearProps: 'opacity,visibility,transform' }
+            ).from('.dropdownItem', {
+                x: 10,
+                autoAlpha: 0,
+                stagger: 0.04,
+                duration: 0.2,
+                clearProps: 'all'
+            }, '-=0.1');
+        }
+    }, { scope: dropdownRef, dependencies: [isOpen] });
 
-        const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
-
-        tl.fromTo(
-            dropdownPanelRef.current,
-            { autoAlpha: 0, y: -14, scale: 0.96, transformOrigin: 'top right' },
-            { autoAlpha: 1, y: 0, scale: 1, duration: 0.25 },
-        ).from('.dropdownItem', {
-            x: 14,
-            autoAlpha: 0,
-            stagger: 0.05,
-            duration: 0.2,
-        }, '-=0.15');
-    }, { scope: dropdownRef, dependencies: [isOpen], revertOnUpdate: true });
-
+    // Mobile Menu Panel Animation
     useGSAP(() => {
-        if (!isMobileMenuOpen || !mobileMenuRef.current) return;
+        const panel = document.querySelector('.mobileMenuPanel');
+        if (isMobileMenuOpen && panel) {
+            gsap.fromTo(panel,
+                { autoAlpha: 0, x: 20, scale: 0.98 },
+                { autoAlpha: 1, x: 0, scale: 1, duration: 0.35, ease: 'power2.out', clearProps: 'all' }
+            );
+        }
+    }, { scope: navRef, dependencies: [isMobileMenuOpen] });
 
-        const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
-
-        tl.fromTo(
-            '.mobileMenuPanel',
-            { autoAlpha: 0, y: -18, scale: 0.98, transformOrigin: 'top center' },
-            { autoAlpha: 1, y: 0, scale: 1, duration: 0.22 },
-        ).from('.mobileMenuPanel .mobileMenuItem', {
-            y: -10,
-            autoAlpha: 0,
-            stagger: 0.045,
-            duration: 0.18,
-        }, '-=0.12');
-    }, { scope: mobileMenuRef, dependencies: [isMobileMenuOpen], revertOnUpdate: true });
-
-    const handleMenuToggle = (event) => {
-        event.stopPropagation();
-        setIsMobileMenuOpen((current) => !current);
+    const handleMenuToggle = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+        setIsOpen(false);
     };
 
     const closeMenus = () => {

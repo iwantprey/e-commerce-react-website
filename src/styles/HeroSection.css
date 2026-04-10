@@ -21,13 +21,14 @@
 .heroEyebrow {
   display: inline-flex;
   padding: 0.45rem 0.9rem;
-  background: rgba(0, 123, 255, 0.08);
-  color: #007bff;
+  background: var(--primary-soft);
+  color: var(--ink);
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   margin-bottom: 1.2rem;
+  border: 1px solid var(--line);
 }
 
 .heroTitle {
@@ -35,12 +36,12 @@
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  color: #1a1a1a;
+  color: var(--ink);
 }
 
 .heroSubtitle {
   font-size: 1.25rem;
-  color: #4a4a4a;
+  color: var(--muted);
   margin-bottom: 2.5rem;
   line-height: 1.6;
   max-width: 500px;
@@ -56,16 +57,20 @@
   padding: 1rem 2.5rem;
   font-size: 1rem;
   font-weight: 700;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--primary);
+  color: var(--ink);
   border: none;
-  border-radius: 8px;
-  transition: background-color 0.2s;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  will-change: transform, background-color, box-shadow;
 }
 
 .ctaButton:hover {
-  background-color: #0056b3;
+  background-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-strong);
 }
 
 .secondaryButton {
@@ -73,16 +78,25 @@
   font-size: 1rem;
   font-weight: 700;
   background-color: transparent;
-  color: #007bff;
-  border: 2px solid #007bff;
-  border-radius: 8px;
+  color: var(--ink);
+  border: 2px solid var(--line);
+  border-radius: 12px;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, border-color, background-color;
+}
+
+.secondaryButton:hover {
+  background-color: var(--surface);
+  border-color: var(--primary);
+  transform: translateY(-2px);
 }
 
 .heroGraphic img {
   max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border-radius: 24px;
+  box-shadow: var(--shadow-strong);
+  will-change: transform;
 }
 
 .heroGraphic {

@@ -26,30 +26,38 @@ const QuickViewModal = ({ product, onClose }) => {
       autoAlpha: 0,
     }, {
       autoAlpha: 1,
-      duration: 0.2,
+      duration: 0.3,
+      ease: 'power2.out',
+      clearProps: 'all',
     }).fromTo('.modalContent', {
-      y: 32,
+      y: 24,
       autoAlpha: 0,
-      scale: 0.96,
+      scale: 0.98,
       transformOrigin: 'center center',
     }, {
       y: 0,
       autoAlpha: 1,
       scale: 1,
-      duration: 0.42,
-    }, '-=0.05')
+      duration: 0.6,
+      ease: 'expo.out',
+      clearProps: 'all',
+    }, '-=0.1')
       .from('.modalImage img', {
-        x: -24,
+        x: -20,
         autoAlpha: 0,
-        scale: 0.94,
-        duration: 0.38,
-      }, '-=0.25')
+        scale: 0.96,
+        duration: 0.6,
+        ease: 'expo.out',
+        clearProps: 'all',
+      }, '-=0.4')
       .from('.modalInfo > *', {
-        y: 18,
+        y: 12,
         autoAlpha: 0,
-        stagger: 0.06,
-        duration: 0.3,
-      }, '-=0.28');
+        stagger: 0.05,
+        duration: 0.5,
+        ease: 'expo.out',
+        clearProps: 'all',
+      }, '-=0.5');
   }, { scope: modalRef, dependencies: [product], revertOnUpdate: true });
 
   if (!product) return null;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ENDPOINTS } from '../apiConfig';
 import AddToCartButton from '../components/AddToCartButton.jsx';
 import { gsap, useGSAP } from '../lib/gsap.js';
+import { getProducts } from '../lib/productService.js';
 
 function ProductPage() {
     const [products, setProducts] = useState([]);
@@ -9,8 +9,7 @@ function ProductPage() {
     const pageRef = useRef(null);
 
     useEffect(() => {
-        fetch(ENDPOINTS.PRODUCTS)
-            .then((res) => res.json())
+        getProducts()
             .then((data) => {
                 setProducts(data);
                 setIsLoading(false);
@@ -22,31 +21,37 @@ function ProductPage() {
     }, []);
 
     useGSAP(() => {
-        gsap.from('h1', {
-            y: 24,
+        gsap.from('.sectionHeader > *', {
+            y: 20,
             autoAlpha: 0,
-            duration: 0.5,
-            ease: 'power3.out',
+            stagger: 0.1,
+            duration: 0.8,
+            ease: 'expo.out',
+            clearProps: 'all',
         });
 
         if (!products.length) return;
 
         gsap.from('.productCard', {
-            y: 50,
+            y: 32,
             autoAlpha: 0,
-            scale: 0.95,
-            stagger: 0.08,
-            duration: 0.75,
-            ease: 'power3.out',
+            scale: 0.98,
+            stagger: 0.06,
+            duration: 0.8,
+            ease: 'expo.out',
+            clearProps: 'all',
         });
     }, { scope: pageRef, dependencies: [products], revertOnUpdate: true });
 
     return(
         <div className="homeContainer" ref={pageRef}>
-            <h1>Products</h1>
+            <header className="sectionHeader">
+                <h1 className="sectionTitle">All Products</h1>
+                <p className="sectionSubtitle">Curated essentials for a modern wardrobe.</p>
+            </header>
             {isLoading ? (
                 <p>Loading products...</p>
-            ) : (
+            ) : products.length ? (
                 <div className="productGrid">
                     {products.map((product) => (
                         <div key={product.id} className="productCard">
@@ -61,6 +66,8 @@ function ProductPage() {
                         </div>
                     ))}
                 </div>
+            ) : (
+                <p className="emptyProductsMessage">No products available right now.</p>
             )}
         </div>
     );

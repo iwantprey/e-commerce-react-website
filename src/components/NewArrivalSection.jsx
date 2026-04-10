@@ -1,92 +1,81 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/NewArrivalSection.css';
-import { ENDPOINTS } from '../apiConfig';
-import QuickViewModal from './QuickViewModal.jsx';
-import AddToCartButton from './AddToCartButton.jsx';
+import { getProducts } from '../lib/productService.js';
+import AddToCartButton from './AddToCartButton';
+import QuickViewModal from './QuickViewModal';
 import { gsap, useGSAP } from '../lib/gsap.js';
+import '../styles/NewArrivalSection.css';
 
 const NewArrivalSection = () => {
+  const sectionRef = useRef(null);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Now using the configured endpoint. 
-    // For now, keep the external URL if you don't have a local backend running yet.
-    fetch(ENDPOINTS.PRODUCTS || 'https://fakestoreapi.com/products/category/men\'s clothing')
-      .then(res => res.json())
-      .then(data => {
-        // Map API data to our existing UI structure
-        const formattedData = data.slice(0, 8).map((item, index) => ({
-          id: item.id,
-          name: item.title,
-          category: item.category,
-          price: `$${item.price}`,
-          image: item.image,
-          tag: index < 4 ? 'New' : 'Popular'
-        }));
-        setProducts(formattedData);
-        setIsLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to load products:", err);
-        setIsLoading(false);
-      });
+    getProducts().then(data => {
+      setProducts(data);
+      setIsLoading(false);
+    });
   }, []);
 
   useGSAP(() => {
+    // Entrance Animations
     gsap.from('.sectionHeader > *', {
       y: 30,
       autoAlpha: 0,
-      stagger: 0.12,
-      duration: 0.7,
-      ease: 'power3.out',
+      stagger: 0.1,
+      duration: 0.8,
+      ease: 'expo.out',
+      clearProps: 'all',
       scrollTrigger: {
         trigger: '.sectionHeader',
-        start: 'top 82%',
+        start: 'top 85%',
       },
     });
 
     gsap.from('.viewAllButton', {
-      y: 24,
+      y: 20,
       autoAlpha: 0,
-      duration: 0.55,
-      ease: 'power3.out',
+      duration: 0.6,
+      ease: 'expo.out',
+      clearProps: 'all',
       scrollTrigger: {
         trigger: '.viewAllContainer',
-        start: 'top 90%',
+        start: 'top 92%',
       },
     });
 
     if (!products.length) return;
 
     gsap.from('.productCard', {
-      y: 56,
+      y: 40,
       autoAlpha: 0,
-      scale: 0.94,
-      stagger: 0.08,
+      scale: 0.98,
+      stagger: 0.05,
       duration: 0.8,
-      ease: 'power3.out',
+      ease: 'expo.out',
+      clearProps: 'all',
       scrollTrigger: {
         trigger: '.productGrid',
-        start: 'top 78%',
+        start: 'top 80%',
       },
     });
 
     gsap.from('.badge', {
       scale: 0,
       autoAlpha: 0,
-      stagger: 0.08,
-      duration: 0.45,
-      ease: 'back.out(2)',
+      stagger: 0.05,
+      duration: 0.5,
+      ease: 'back.out(1.4)',
+      clearProps: 'all',
       scrollTrigger: {
         trigger: '.productGrid',
-        start: 'top 78%',
+        start: 'top 80%',
       },
     });
 
+    // Card Hover Interactions
     const cards = gsap.utils.toArray('.productCard');
     const cleanups = cards.map((card) => {
       const image = card.querySelector('img');
@@ -144,7 +133,7 @@ const NewArrivalSection = () => {
     return () => {
       cleanups.forEach((cleanup) => cleanup());
     };
-  }, { scope: sectionRef, dependencies: [products], revertOnUpdate: true });
+  }, { scope: sectionRef, dependencies: [products] });
 
   return (
     <section className="newArrivals" ref={sectionRef}>
@@ -155,21 +144,27 @@ const NewArrivalSection = () => {
       
       {isLoading ? <p style={{textAlign: 'center'}}>Loading latest collection...</p> : (
       
+      products.length ? (
       <div className="productGrid">
         {products.map((product) => (
           <div key={product.id} className="productCard" onClick={() => setSelectedProduct(product)}>
             <div className="productImage">
-              <img src={product.image} alt={product.name} />
-              <div className={`badge ${product.tag.toLowerCase()}`}>{product.tag}</div>
+              <img src={product.image} alt={product.title} />
+              {product.tag && (
+                <div className={`badge ${product.tag.toLowerCase()}`}>{product.tag}</div>
+              )}
             </div>
             <div className="productInfo">
-              <h3 className="productName">{product.name}</h3>
-              <p className="productPrice">{product.price}</p>
+              <h3 className="productName">{product.title}</h3>
+              <p className="productPrice">${product.price}</p>
               <AddToCartButton product={product} />
             </div>
           </div>
         ))}
       </div>
+      ) : (
+      <p className="emptyProductsMessage">The latest collection will appear here soon.</p>
+      )
       )}
       
       <div className="viewAllContainer">

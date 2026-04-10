@@ -41,7 +41,7 @@ export default function SignUpForm (){
     };
 
     useGSAP(() => {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out', clearProps: 'all' } });
 
         tl.from('.loginCard', {
             y: 30,
@@ -67,7 +67,7 @@ export default function SignUpForm (){
                 stagger: 0.08,
                 duration: 0.28,
             }, '-=0.1');
-    }, { scope: formRef, dependencies: [serverError], revertOnUpdate: true });
+    }, { scope: formRef, dependencies: [serverError] });
 
     return(
         <div className="loginWrapper" ref={formRef}>
@@ -78,7 +78,7 @@ export default function SignUpForm (){
                 {(serverError || location.state?.authMessage) && <p className="error">{serverError || location.state?.authMessage}</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="inputBox">
-                        <input type="text" id="firstName" placeholder="First Name"
+                        <input type="text" id="firstName" placeholder=" "
                         {...register("firstName" , {required: "First Name is required"})}
                         />
                         <label htmlFor="firstName">First Name</label>
@@ -87,7 +87,7 @@ export default function SignUpForm (){
                     </div>
 
                     <div className="inputBox">
-                        <input type="text" id="lastName" placeholder="Last Name"
+                        <input type="text" id="lastName" placeholder=" "
                         {...register("lastName" , {required: "Last Name is required"})}
                         />
                         <label htmlFor="lastName">Last Name</label>
@@ -96,7 +96,7 @@ export default function SignUpForm (){
                     </div>
                     
                     <div className="inputBox">
-                        <input type="email" id="email" placeholder="Email"
+                        <input type="email" id="email" placeholder=" "
                         {...register("email", {required: "Email is required"})}
                         />
                         <label htmlFor="email">Email Address</label>
@@ -105,33 +105,25 @@ export default function SignUpForm (){
                     </div>
 
                     <div className="inputBox">
-                            <input type="text" id="userName" placeholder="Username"
-                                {...register("userName" , {required: " Username is required"}) }
-                            />
-                            <label htmlFor="userName">User Name</label>
-                            {errors.userName && <p className='error'>{errors.userName.message}</p>
-                            }
+                        <input type="text" id="userName" placeholder=" "
+                        {...register("userName", {required: "Username is required"})}
+                        />
+                        <label htmlFor="userName">Username</label>
+                        {errors.userName && <p className='error'>{errors.userName.message}</p>
+                        }
                     </div>
 
                     <div className="inputBox">
-                            <input type="password" id="password" placeholder="Password"
-                            {...register("password" , {required: "Password is required",
-                            minLength:{
-                                value: 8,
-                                message: "Password must be at least 8 characters"
-                            },
-                            maxLength:{
-                                value: 16,
-                                message: "Password must be at most 16 characters"
-                            }
-                            })}
-                            />
-                            <label htmlFor="password">Password</label>
-                            {errors.password && <p className='error'>{errors.password.message}</p>
-                            }
+                        <input type="password" id="password" placeholder=" "
+                        {...register("password", {required: "Password is required",
+                            minLength: {value: 8, message: "Password must be at least 8 characters"}})}
+                        />
+                        <label htmlFor="password">Password</label>
+                        {errors.password && <p className='error'>{errors.password.message}</p>
+                        }
                     </div>
 
-                    <button className='themeButton' type='submit' disabled={isSubmitting}>
+                    <button type="submit" className="themeButton" disabled={isSubmitting}>
                         {isSubmitting ? 'Creating Account...' : 'Create Account'}
                     </button>
                 </form>
