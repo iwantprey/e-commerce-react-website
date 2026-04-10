@@ -34,7 +34,7 @@ const AddToCartButton = ({ product, className = 'addToCartBtn', onAdded, childre
     };
 
     return (
-        <button className={className} onClick={handleClick}>
+        <button type="button" className={className} onClick={handleClick}>
             {feedback || children}
         </button>
     );

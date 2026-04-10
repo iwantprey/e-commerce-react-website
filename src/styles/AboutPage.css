@@ -1,0 +1,139 @@
+.aboutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 2rem;
+  overflow: hidden;
+}
+
+.aboutHero {
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+.aboutHeroTitle {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.aboutHeroSubtitle {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.aboutSection {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 10rem;
+}
+
+.aboutSection.reverse {
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.aboutImage {
+  width: 100%;
+  border-radius: 32px;
+  box-shadow: var(--shadow-strong);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/5;
+  background: var(--surface-muted);
+}
+
+.aboutImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutContent h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.aboutContent p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.valueCard {
+  background: var(--surface-strong);
+  padding: 3rem 2rem;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.valueCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-strong);
+  border-color: var(--primary);
+}
+
+.valueIcon {
+  width: 64px;
+  height: 64px;
+  background: var(--primary-soft);
+  color: var(--ink);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 1.5rem;
+}
+
+.valueCard h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.valueCard p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .aboutSection, .aboutSection.reverse {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .aboutSection.reverse .aboutImage {
+    order: -1;
+  }
+  
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .aboutHero {
+    margin-bottom: 5rem;
+  }
+}

@@ -1,9 +1,9 @@
 .footer {
   padding: 5rem 2rem 2rem;
-  background-color: #ffffff;
-  border-top: 1px solid #eee;
+  background-color: var(--surface-strong);
+  border-top: 1px solid var(--line);
   margin-top: 4rem;
-  color: #1a1a1a;
+  color: var(--ink);
 }
 
 .footerContainer {
@@ -27,7 +27,7 @@
 }
 
 .footerDescription {
-  color: #666;
+  color: var(--muted);
   line-height: 1.6;
   font-size: 0.95rem;
   max-width: 300px;
@@ -50,21 +50,22 @@
 
 .footerLinks a {
   text-decoration: none;
-  color: #666;
+  color: var(--muted);
   font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 
 .footerLinks a:hover {
-  color: #007bff;
+  color: var(--accent);
 }
 
 .footerBottom {
   padding-top: 2rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--line);
   text-align: center;
-  color: #999;
+  color: var(--muted);
   font-size: 0.85rem;
+  opacity: 0.7;
 }
 
 @media (max-width: 960px) {

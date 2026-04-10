@@ -70,10 +70,10 @@ const Footer = () => {
           <div className="footerColumn">
             <h4 className="footerTitle">Support</h4>
             <ul className="footerLinks">
-              <li><a href="#">Shipping Info</a></li>
-              <li><a href="#">Returns</a></li>
-              <li><a href="#">Order Tracking</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+              <li><Link to="/shipping">Shipping Info</Link></li>
+              <li><Link to="/returns">Returns</Link></li>
+              <li><Link to="/tracking">Order Tracking</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
             </ul>
           </div>
         </div>

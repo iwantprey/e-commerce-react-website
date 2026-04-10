@@ -13,15 +13,13 @@ import ShopPage from './pages/ShopPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import CartPage from './pages/CartPage.jsx';
 import OrdersPage from './pages/OrdersPage.jsx';
+import AboutPage from './pages/AboutPage.jsx';
+import ContactPage from './pages/ContactPage.jsx';
+import ShippingPage from './pages/ShippingPage.jsx';
+import ReturnsPage from './pages/ReturnsPage.jsx';
+import TrackingPage from './pages/TrackingPage.jsx';
+import PrivacyPage from './pages/PrivacyPage.jsx';
 import { gsap, useGSAP } from './lib/gsap.js';
-
-function AboutPage() {
-  return (
-    <div>
-      <h1>About Page</h1>
-    </div>
-  )
-}
 
 function App() {
   const appRef = useRef(null);
@@ -33,6 +31,7 @@ function App() {
       autoAlpha: 0,
       duration: 0.6,
       ease: 'power2.out',
+      clearProps: 'all',
     });
   }, { scope: appRef });
 
@@ -67,6 +66,11 @@ function App() {
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/orders" element={<OrdersPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/shipping" element={<ShippingPage />} />
+                <Route path="/returns" element={<ReturnsPage />} />
+                <Route path="/tracking" element={<TrackingPage />} />
+                <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/signUp" element={<SignUpForm />} />
                 <Route path="*" element={<HomePage />} />
             </Routes>
